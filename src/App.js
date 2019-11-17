@@ -48,7 +48,18 @@ class App extends Component {
     });
   };
 
-  handleEdit = id => {};
+  handleEdit = id => {
+    const filterItem = this.state.items.filter(item => {
+      return item.id !== id;
+    });
+    const selectedItem = this.state.items.find(item => item.id === id);
+    this.setState({
+      items: filterItem,
+      item: selectedItem.title,
+      id: id,
+      editItem: true
+    });
+  };
 
   render() {
     return (
